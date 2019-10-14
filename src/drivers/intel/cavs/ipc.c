@@ -120,7 +120,7 @@ static void ipc_irq_handler(void *arg)
 
 static enum task_state ipc_platform_do_cmd(void *data)
 {
-#if CAVS_VERSION < CAVS_VERSION_2_0
+#if CAVS_VERSION < CAVS_VERSION_2_5
 	struct ipc *ipc = data;
 #endif
 	struct sof_ipc_cmd_hdr *hdr;
@@ -131,7 +131,7 @@ static enum task_state ipc_platform_do_cmd(void *data)
 	ipc_cmd(hdr);
 
 	/* are we about to enter D3 ? */
-#if CAVS_VERSION < CAVS_VERSION_2_0
+#if CAVS_VERSION < CAVS_VERSION_2_5
 	if (ipc->pm_prepare_D3) {
 		/* no return - memory will be powered off and IPC sent */
 		platform_pm_runtime_power_off();

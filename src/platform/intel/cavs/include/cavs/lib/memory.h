@@ -47,8 +47,13 @@
 
 #define LPSRAM_MASK(ignored)	((1 << PLATFORM_LPSRAM_EBB_COUNT) - 1)
 
+#if !defined(__ASSEMBLER__)
+#define HPSRAM_MASK(seg_idx)	((1ULL << (PLATFORM_HPSRAM_EBB_COUNT \
+	- EBB_BANKS_IN_SEGMENT * seg_idx)) - 1)
+#else
 #define HPSRAM_MASK(seg_idx)	((1 << (PLATFORM_HPSRAM_EBB_COUNT \
 	- EBB_BANKS_IN_SEGMENT * seg_idx)) - 1)
+#endif
 
 #define LPSRAM_SIZE (PLATFORM_LPSRAM_EBB_COUNT * SRAM_BANK_SIZE)
 

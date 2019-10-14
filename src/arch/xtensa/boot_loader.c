@@ -167,7 +167,7 @@ static void parse_manifest(void)
 #endif
 
 /* power off unused HPSRAM */
-#if CONFIG_CANNONLAKE
+#if CONFIG_CANNONLAKE || CONFIG_ICELAKE
 
 static int32_t hp_sram_pm_banks(uint32_t banks)
 {

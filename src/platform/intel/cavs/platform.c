@@ -419,7 +419,7 @@ int platform_init(struct sof *sof)
 
 	shim_write(SHIM_LPSCTL, shim_read(SHIM_LPSCTL));
 
-#elif CONFIG_CANNONLAKE
+#elif CONFIG_CANNONLAKE || CONFIG_ICELAKE 
 
 	/* initialize PM for boot */
 	shim_write(SHIM_CLKCTL,
@@ -443,7 +443,7 @@ int platform_init(struct sof *sof)
 		     SHIM_PWRCTL_TCPDSPPG(1) | SHIM_PWRCTL_TCPDSPPG(2) |
 		     SHIM_PWRCTL_TCPDSPPG(3));
 
-#elif CONFIG_ICELAKE || CONFIG_SUECREEK || CONFIG_TIGERLAKE
+#elif  CONFIG_SUECREEK || CONFIG_TIGERLAKE
 	/* TODO: need to merge as for APL */
 	clock_set_freq(CLK_CPU(cpu_get_id()), CLK_MAX_CPU_HZ);
 
